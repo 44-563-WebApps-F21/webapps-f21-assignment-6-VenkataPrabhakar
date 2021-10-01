@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <title>JsPage</title>
+<body>
+
+<h2>Pass phrase by VenkataPrabhakar</h2>
+
+
+
+<script> 
+ var correct=0;
+    var wrong=0;
+function processPhrase(){
+   
+    console.log("Getting form values")
+    pswd=document.getElementById("form1_pswd").value
+    guess=document.getElementById("form1_guess").value
+
+    out = document.getElementById("result")
+    if(pswd == guess){
+        alert("Access allowed")
+        correct++
+        out.innerHTML="correct: "+correct+" wrong: "+wrong
+    }else{
+        alert("Access denied")
+        wrong++
+        out.innerHTML="correct: "+correct+" wrong: "+wrong
+    }
+
+    
+}
+function resolveForm (){
+    
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+
+</body>
+</html> 
