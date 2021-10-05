@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html>
- <title>JsPage</title>
+<title>JsPage</title>
+
 <body>
 
-<h2>Pass phrase by VenkataPrabhakar</h2>
+    <h2>Pass phrase by VenkataPrabhakar</h2>
 
-<form>
-    <label for="form1_pswd">Enter the secret phrase</label>
-    <input type ="password" id="form1_pswd" name="form1_pswd" value="Let me in"> <br>
+    <form>
+        <label for="form1_pswd">Enter the secret phrase</label>
+        <input type="password" id="form1_pswd" name="form1_pswd" value="Let me in"> <br>
 
-    <label for="form1_guess">Enter a phrase </label>
-    <input type ="text" id="form1_guess" name="form1_nick" autofocus> <br>
+        <label for="form1_guess">Enter a phrase </label>
+        <input type="text" id="form1_guess" name="form1_nick" autofocus> <br>
 
-    <input type="button" onclick="processPhrase()" value="Check the phrase">
-</form>
+        <input type="button" onclick="processPhrase()" value="Check the phrase">
+    </form>
 
 
-<p id="result">This text will be replaced with wrong/right counts</p>
+    <p id="result">This text will be replaced with wrong/right counts</p>
+    <div class="container">
+        <img id="img1" src=Labradoodle.jpg alt="Panther" onclick="newImage(this)" width="200" height="200">
 
-<script> 
- var correct=0;
-    var wrong=0;
-function processPhrase(){
-   
-    console.log("Getting form values")
-    pswd=document.getElementById("form1_pswd").value
-    guess=document.getElementById("form1_guess").value
+    </div>
 
-    out = document.getElementById("result")
-    if(pswd == guess){
-        alert("Access allowed")
-        correct++
-        out.innerHTML="correct: "+correct+" wrong: "+wrong
-    }else{
-        alert("Access denied")
-        wrong++
-        out.innerHTML="correct: "+correct+" wrong: "+wrong
-    }
+    <script>
+        var correct = 0;
+        var wrong = 0;
+        let usingImage = 1;
+        function processPhrase() {
 
-    
-}
-function resolveForm (){
-    
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+            console.log("Getting form values")
+            pswd = document.getElementById("form1_pswd").value
+            guess = document.getElementById("form1_guess").value
+
+            out = document.getElementById("result")
+            if (pswd == guess) {
+                alert("Access allowed")
+                correct++
+                out.innerHTML = "correct: " + correct + " wrong: " + wrong
+            } else {
+                alert("Access denied")
+                wrong++
+                out.innerHTML = "correct: " + correct + " wrong: " + wrong
+            }
+
+
+        }
+        function newImage(img) {
+            switch (usingImage) {
+                case 1:
+                    document.getElementById("img1").src = "Labradoodle.jpg";
+                    usingImage++;
+                    break;
+                case 2:
+                    document.getElementById("img1").src = "keeshond.jpg";
+                    usingImage++;
+                    break;
+                case 3:
+                    document.getElementById("img1").src = "alpaca.jpg";
+                    usingImage = 1;
+                    break;
+            }
+        }
+        function resolveForm() {
+            console.log("Getting form values")
+            age = document.getElementById("form1_age").value
+            nick = document.getElementById("form1_nick").value
+            confirmed = confirm("Are these the values? " + age + " and " + nick)
+
+            out = document.getElementById("result")
+            if (confirmed) {
+                out.innerHTML = "Values were confirmed"
+            } else {
+                out.innerHTML = "Values were not confirmed"
+            }
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
