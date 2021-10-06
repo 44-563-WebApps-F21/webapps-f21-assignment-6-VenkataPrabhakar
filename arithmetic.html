@@ -8,32 +8,25 @@
     <form>
         <label for="form1_base">Enter a base </label>
         <input type="number" id="form1_base" name="form1_base" min=10 max=50 step=2 value=10> <br>
-
         <label for="form1_exp">Enter an exponent</label>
         <input type="number" id="form1_exp" name="form1_exp" autofocus> <br>
-
         <input type="button" onclick="powers()" value="Compute">
     </form>
     <p id="result1">This text will be replaced </p>
-
     <form>
         <input type="radio" id="rg1_add" name="operation" onclick="processRadio(this.value)" value="plus">
         <label for="rg1_add">+</label></br>
-
         <input type="radio" id="rg1_sub" name="operation" onclick="processRadio(this.value)" value="minus">
         <label for="rg1_sub">-</label></br>
-
         <input type="radio" id="rg1_mul" name="operation" onclick="processRadio(this.value)" value="times">
         <label for="rg1_mul">*</label></br>
         <input type="radio" id="rg1_divi" name="operation" onclick="processRadio(this.value)" value="divide">
         <label for="rg1_divi">/</label></br>
     </form>
     <p id="result2">This text will be replaced </p>
-
     <script>
         function powers() {
             var result = "";
-
             console.log("Getting form values")
             let base = document.getElementById("form1_base").value
             let exp = document.getElementById("form1_exp").value
@@ -42,43 +35,23 @@
                 result += Math.pow(base, i) + " ";
             }
             out.innerHTML = "Powers of " + base + " are : " + result
-
-
-        }
-        function resolveForm() {
-            console.log("Getting form values")
-            age = document.getElementById("form1_age").value
-            nick = document.getElementById("form1_nick").value
-            confirmed = confirm("Are these the values? " + age + " and " + nick)
-
-            out = document.getElementById("result")
-            if (confirmed) {
-                out.innerHTML = "Values were confirmed"
-            } else {
-                out.innerHTML = "Values were not confirmed"
-            }
         }
         function processRadio(operation) {
+            var result = "";
             console.log("OPERATIONS")
+            out = document.getElementById("result2")
             let base = document.getElementById("form1_base").value
             let exp = document.getElementById("form1_exp").value
-            var result = 0;
-            if (operation == "plus") {             
-                result = (Number)(base) + (Number)(exp);
-                document.getElementById("result2").innerHTML = "Sum of " + base + " and" + exp + " =" + result;
+            if (document.getElementById("rg1_add").checked) {
+                out.innerHTML = Number(base) + Number(exp);
+            } else if (document.getElementById("rg1_sub").checked) {
+                out.innerHTML = base - exp;
+            } else if (document.getElementById("rg1_mul").checked) {
+                out.innerHTML = base * exp;
+            } else {
+                out.innerHTML = base / exp;
             }
-            else if (operation == "minus") {              
-                result == base - exp;
-                document.getElementById("result2").innerHTML = "Subtraction of " + base + " and" + exp + " =" + result;
-            }
-            else if (operation == "times") {               
-                result == Number(base) * Number(exp);
-                document.getElementById("result2").innerHTML = "Multiplication of " + base + " and" + exp + " =" + result;
-            }
-            else if (operation == "divide") {              
-                result == (Number)(base) / (Number)(exp);
-                document.getElementById("result2").innerHTML = "Division of " + base + " and" + exp + " =" + result;
-            }
+
         }
     </script>
 
